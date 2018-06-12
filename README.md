@@ -1,2 +1,2 @@
 # hello-world
-Hey forks! I am trying to merge Github with my thesis workflow!
+Hey forks! I am trying to merge Github into my thesis workflow!
