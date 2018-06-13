@@ -1,0 +1,6 @@
+# Journal 13 June 2018
+
+## Achievements
+* Finally, we can train the ROE_NN project in Google Cloud platform. 
+  - There were **problems** related with python-package compatibilities. 
+  - The **solution** was to reinstall *cudnn* library to match the versions, as well as reinstall tensorflow in *sudo su* mode.
