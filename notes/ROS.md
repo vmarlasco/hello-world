@@ -1,10 +1,10 @@
 # ROS msg and srv
 
-##Intro
+## Intro
 * **msg:** msg file are txt files that describes the files of a ROS message.
 * **srv:** srv file describes a service. It is composed of two parts, request and response.
 
-*msg files are stored in msg directory, and srv files in srv directory*
+                 *msg files are stored in msg directory, and srv files in srv directory*
 
 The field types you can use are:
  * int8, int16, in32, int64
