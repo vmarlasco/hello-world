@@ -1,3 +1,62 @@
+# Create catkin workspace
+```
+$ source /opt/ros/kinetic/setup.bash
+$ mkdir -p ~/catkin_ws/src
+$ cd ~/catkin_ws/
+$ catkin_make
+$ source devel/setup.bash
+```
+
+# Packages in catkin workspace
+## Workspace configuration
+```
+workspace_folder/         -- WORKSPACE
+  src/                    -- SOURCE SPACE
+    CMakeLists.txt        -- The 'toplevel' CMake file
+    package_1/
+      CMakeLists.txt
+      package.xml
+      ...
+    package_n/
+      CATKIN_IGNORE       -- Optional empty file to exclude package_n from being processed
+      CMakeLists.txt
+      package.xml
+      ...
+  build/                  -- BUILD SPACE
+    CATKIN_IGNORE         -- Keeps catkin from walking this directory
+  devel/                  -- DEVELOPMENT SPACE (set by CATKIN_DEVEL_PREFIX)
+    bin/
+    etc/
+    include/
+    lib/
+    share/
+    .catkin
+    env.bash
+    setup.bash
+    setup.sh
+    ...
+  install/                -- INSTALL SPACE (set by CMAKE_INSTALL_PREFIX)
+    bin/
+    etc/
+    include/
+    lib/
+    share/
+    .catkin             
+    env.bash
+    setup.bash
+    setup.sh
+    ...
+```
+
+## Create a catkin package
+```
+$ cd ~/catkin_ws/src
+$ catkin_create_pkg <package_name> [depend1] [depend2] [depend3]
+$ cd ~/catkin_ws
+$ catkin_make
+$ . ~/catkin_ws/devel/setup.bash
+```
+
 # ROS msg and srv
 
 ## Intro
