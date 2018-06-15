@@ -55,7 +55,9 @@ if __name__ == '__main__':
 ```
 
 We can simply run a the node with the command:
+```
         rosrun beginner_tutorials talker.py       #rosrun (package) (node)
+```
 
 # Subscriber
 Node that will receive the messages. Both nodes should be subscrited to the topic chatter in order to perform the communication.
@@ -92,6 +94,10 @@ if __name__ == '__main__':
     listener()
 ```
 
+We can simply run a the node with the command:
+```
+        rosrun beginner_tutorials listener.py       #rosrun (package) (node)
+```
 
 
 
