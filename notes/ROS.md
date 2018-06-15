@@ -24,14 +24,14 @@ The field types you can use are:
  ```
 
 # Publisher
-We example shown is a node that would continually broadcast a message
+As example, we show a node that would continually broadcast a message.
 
 ```python
+#!/usr/bin/env python
+##First of all we make sure that our code will be trated as python code
+
 ## Simple talker demo that published std_msgs/Strings messages
 ## to the 'chatter' topic
-
-##First of all we make sure that our code will be trated as python code
-#!/usr/bin/env python 
 
 import rospy    #Compulsory to import rospy for being trated as a ros node
 from std_msgs.msg import String   #We would reuse the std_msgs/String message for our publications
@@ -53,3 +53,44 @@ if __name__ == '__main__':
     except rospy.ROSInterruptException:   #rospy.sleep() may rise and interruption with ctrl+C
         pass
 ```
+
+# Subscriber
+Node that will receive the messages. Both nodes should be subscrited to the topic chatter in order to perform the communication.
+
+```python
+#!/usr/bin/env python
+##First of all we make sure that our code will be trated as python code
+
+## Simple talker demo that listens to std_msgs/Strings published 
+## to the 'chatter' topic
+
+import rospy
+from std_msgs.msg import String
+
+## Callback-based mechanism for subscribing massages
+def callback(data):
+    rospy.loginfo(rospy.get_caller_id() + 'I heard %s', data.data)
+
+def listener():
+
+    # In ROS, nodes are uniquely named. If two nodes with the same
+    # name are launched, the previous one is kicked off. The
+    # anonymous=True flag means that rospy will choose a unique
+    # name for our 'listener' node so that multiple listeners can
+    # run simultaneously.
+    rospy.init_node('listener', anonymous=True)
+
+    rospy.Subscriber('chatter', String, callback)   #Node subscribe to topic chatter, and execute callback when reception
+
+    # spin() simply keeps python from exiting until this node is stopped
+    rospy.spin()
+
+if __name__ == '__main__':
+    listener()
+```
+
+
+
+
+
+
