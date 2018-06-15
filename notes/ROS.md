@@ -99,7 +99,70 @@ We can simply run a the node with the command:
         rosrun beginner_tutorials listener.py       #rosrun (package) (node)
 ```
 
+# Service node
+Services are like-functions nodes, in the sense that they are ready for "serve" or carry with some task when it is requested. The file **scripts/add_two_ints_server.py** is written.
 
+> In previous tutorials it was created the file *AddTwoInts.srv* with two inputs (*int64 a*, *int64 b*) an one output (*int64 sum)
+
+```
+ #!/usr/bin/env python
+ 
+ from beginner_tutorials.srv import *   #In first place, we have to import the created nodes
+ import rospy   #import rospy for defining as ROS node
+ 
+ ## We define in a fuction the real behaviour (handling) of our server: summation (and print the result by screen)
+ def handle_add_two_ints(req):
+     print "Returning [%s + %s = %s]"%(req.a, req.b, (req.a + req.b))
+     return AddTwoIntsResponse(req.a + req.b)
+ 
+ ## We define the node and we make it known for the master
+ def add_two_ints_server():
+     rospy.init_node('add_two_ints_server')
+     s = rospy.Service('add_two_ints', AddTwoInts, handle_add_two_ints) #We degine the name, srv, and handling function
+     print "Ready to add two ints."
+     rospy.spin()   #Keep node running until service is shutdown
+ 
+ if __name__ == "__main__":
+     add_two_ints_server()
+```
+
+**Do not forget to make the nodes executable**
+```
+chmod +x scripts/add_two_ints_server.py
+```
+
+# Client node
+The client node will request a task from the service node. The file **scripts/add_two_ints_server.py** is written. As we would see this is a client node, so we do not have to initiate a node with *init_node()* because it is written only for request an isolated service.
+
+```python
+#!/usr/bin/env python
+
+import sys
+import rospy
+from beginner_tutorials.srv import *
+
+def add_two_ints_client(x, y):
+    rospy.wait_for_service('add_two_ints')    #Method that blocks until server is available
+    try:
+        add_two_ints = rospy.ServiceProxy('add_two_ints', AddTwoInts)   #Once we have the resource, we create a handle for calling
+        resp1 = add_two_ints(x, y)    #We use the handle as a common function
+        return resp1.sum    #We have to realize that .srv are objects (AddTwoIntsRequest & AddTwoIntsResponse)
+    except rospy.ServiceException, e:
+        print "Service call failed: %s"%e
+
+def usage():
+    return "%s [x y]"%sys.argv[0]
+
+if __name__ == "__main__":
+    if len(sys.argv) == 3:
+        x = int(sys.argv[1])
+        y = int(sys.argv[2])
+    else:
+        print usage()
+        sys.exit(1)
+    print "Requesting %s+%s"%(x, y)
+    print "%s + %s = %s"%(x, y, add_two_ints_client(x, y))
+```
 
 
 
