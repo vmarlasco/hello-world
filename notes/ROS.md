@@ -163,7 +163,7 @@ Services are like-functions nodes, in the sense that they are ready for "serve" 
 
 > In previous tutorials it was created the file *AddTwoInts.srv* with two inputs (*int64 a*, *int64 b*) an one output (*int64 sum)
 
-```
+```python
  #!/usr/bin/env python
  
  from beginner_tutorials.srv import *   #In first place, we have to import the created nodes
