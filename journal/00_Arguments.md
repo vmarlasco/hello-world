@@ -6,3 +6,6 @@ In this file we will take notes about the reflexions and diferetn arguments that
   environments (rescue, guidance, path planning) and because the are very common (what allows us to used as reference and improve
   map building), but there are not a large amount of them, what is perfect because of the limited resources of the raspberry pi:
   it is not neede to storage a lot of different objects, and between frames the processing is reduced.
+  
+## Performance
+* We have to notice that object detection implies models with large size than object recognition (**search for comparison**), because the previous uses the later.
