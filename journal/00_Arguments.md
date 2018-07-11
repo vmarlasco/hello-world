@@ -9,3 +9,7 @@ In this file we will take notes about the reflexions and diferetn arguments that
   
 ## Performance
 * We have to notice that object detection implies models with large size than object recognition (**search for comparison**), because the previous uses the later.
+
+
+## Tracker
+* Another "real time" tracking algorithmls implemented in raspberry py, are based the on simplifacations shuch as color substracting (ball examample), or scene difference [paper](http://cs231n.stanford.edu/reports/2017/pdfs/808.pdf)
