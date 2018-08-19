@@ -15,3 +15,9 @@ In this file we will take notes about the reflexions and diferetn arguments that
 
 ## Tracker
 * Another "real time" tracking algorithmls implemented in raspberry py, are based the on simplifacations shuch as color substracting (ball examample), or scene difference [paper](http://cs231n.stanford.edu/reports/2017/pdfs/808.pdf)
+
+## SqueezeDet
+* Fewer parameters: smaller for the deployment of final application, and faster
+
+## Future work
+* Implement the NN in OpenCV, which is more optimized for RPi
